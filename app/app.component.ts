@@ -1,32 +1,33 @@
 import { Component, EventEmitter } from 'angular2/core';
-import { TaskListComponent } from './task-list.component';
-import { Task } from './task.model'
+import { DispListComponent } from './disp-list.component';
+import { DispComponent } from './disp.component';
+import { Disp } from './disp.model'
 
 @Component({//This component is special - it will hold our entire app. An Angular2 app is built with a tree of components. We have one component called the root component that is responsible for loading its child components, and each of them has their own child components. This way we break our app into manageable chunks.
   selector: 'my-app',
-    directives: [TaskListComponent],
+    directives: [DispListComponent],
     template: `
       <div class="container">
-        <h1>To-Do List</h1>
-        <task-list
-         [taskList]="tasks"
-         (onTaskSelect)="taskWasSelected($event)">
-        </task-list>
-      <div>
+        <h1>Dispensary List</h1>
+        <disp-list
+         [dispList]="disps"
+         (onDispSelect)="dispWasSelected($event)">
+        </disp-list>
+      </div>
     `
 })
 
 export class AppComponent {
-  public tasks: Task[];
+  public disps: Disp[];
   constructor(){
-    this.tasks = [
-      new Task("Create To-Do List app.", 0),
-      new Task("Learn Kung Fu.", 1),
-      new Task("More Breakfast Sandwiches", 2),
-      new Task("Do the laundry", 3)
+    this.disps = [
+      new Disp("Chalice Farms", "123 SE Powell Blvd", 2, 0),
+      new Disp("AwesomeFarm Farms", "456 Farm St", 1, 1),
+      new Disp("Gluten Free Nugs", "123 Expensive Ave", 3, 2),
+      new Disp("Rockin Sockin Buds", "420 Mendocino Ave", 2, 3)
     ];
   }
-  taskWasSelected(clickedTask: Task): void {
-    console.log(clickedTask);
+  dispWasSelected(clickedDisp: Disp): void {
+
   }
 }
