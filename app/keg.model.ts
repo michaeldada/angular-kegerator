@@ -3,7 +3,7 @@ export class Keg {
   constructor(public name: string, public ABV: number, public price: number, public id: number) {
 }
   fullPercent() {
-    return (this.pints/124) * 100;
+    return Math.round((this.pints/124) * 100);
   }
 
   sellPint() {
@@ -11,4 +11,10 @@ export class Keg {
       this.pints--;
     }
   }
+}
+
+export interface IKeg {
+  name: string;
+  ABV: number;
+  price: number;
 }

@@ -8,9 +8,10 @@ import { Keg } from './keg.model';
     <div>
       <ul>
         <li>{{ keg.name }}</li>
-        <li>{{ keg.ABV }}</li>
-        <li>{{ keg.price }}</li>
-        <li>{{ keg.pints }}</li>
+        <li> Amount Left: {{ keg.fullPercent() }} %</li>
+        <li>ABV: {{ keg.ABV }}</li>
+        <li>{{ keg.price | currency:'USD':true:'1.2-2' }} Pint</li>
+        <li>Pints Remaining {{ keg.pints }}</li>
       </ul>
       <button (click)="sellPint()">Sell a Pint</button>
     </div>
