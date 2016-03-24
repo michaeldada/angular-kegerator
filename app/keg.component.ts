@@ -1,9 +1,10 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
 import { Keg } from './keg.model';
 
 @Component({
   selector:'keg',
   inputs: ['keg'],
+  outputs: ['onEditKeg'],//only used when we have an EventEmitter
   template: `
     <div>
       <ul>
@@ -14,14 +15,23 @@ import { Keg } from './keg.model';
         <li>Pints Remaining {{ keg.pints }}</li>
       </ul>
       <button (click)="sellPint()">Sell a Pint</button>
+      <button (click)="editKeg()">Edit Keg Details</button>
     </div>
   `
 })
 
 export class KegComponent {
   public keg: Keg;
+  public onEditKeg: EventEmitter<Keg>;
+  constructor(){
+    this.onEditKeg = new EventEmitter();
+  }
 
   sellPint() {
     this.keg.sellPint();
+  }
+
+  editKeg() {
+    this.onEditKeg.emit(this.keg);
   }
 }

@@ -24,7 +24,8 @@ export class AppComponent {
     this.kegs = [
       new Keg('Oakshire IPA', 7.2, 4, 0),
       new Keg('Sierra Nevada Banana IPA', 8.0, 5, 1),
-      new Keg('Dayum Ale', 5.6, 4, 2),
+      new Keg('Dayum Ale', 5.6, 2, 2),
+      new Keg('Spoiled Bud Light', 0.3, 1, 2)
     ];
   }
     KegWasSelected(clickedKeg: Keg): void {
